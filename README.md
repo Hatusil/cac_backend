@@ -94,6 +94,7 @@ cac_backend/
 │   │   └── IMG (6).jpeg
 ├── manage.py
 ├── requirements.txt
+```
 ## Contribuciones
 
 ¡Las contribuciones son bienvenidas! Si tienes alguna idea para mejorar el proyecto, por favor sigue estos pasos:
