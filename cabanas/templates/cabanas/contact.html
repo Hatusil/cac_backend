@@ -41,7 +41,7 @@
         <div class="contacto__wrapper">
             <section class="form" id="form">
                 <h2 class="form__title" id="contact">Contacto</h2>
-                <form class="form__form" id="contactForm" method="post" action="{% url 'contact' %}">
+                <!--<form class="form__form" id="contactForm" method="post" action="{% url 'contact' %}">
                     {% csrf_token %}
                     <div class="form__input-container">
                         <label for="name">Nombre
@@ -81,6 +81,11 @@
                         <input type="submit" value="Enviar">
                         <input type="reset" value="Borrar">
                     </div>
+                </form>-->
+                <form method="post" id="ContactForm">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Enviar</button>
                 </form>
             </section>
         </div>
@@ -95,7 +100,7 @@
     <footer>
         <p>Derechos de autor © 2024 Cabañas Doña Arminda. Todos los derechos reservados.</p>
     </footer>
-    <script>
+    <!--<script>
         document.getElementById('contactForm').addEventListener('submit', function (event) {
             event.preventDefault();
             let name = document.getElementById('name').value;
@@ -112,7 +117,7 @@
                 alert('Por favor, complete todos los campos.');
             }
         });
-    </script>
+    </script>-->
     <script src="{% static 'js/script.js' %}"></script>
     <script>
         window.addEventListener('load', makeNavbarFixedForOtherPages);
