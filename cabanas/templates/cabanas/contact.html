@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" href="{% static 'img/logo.png' %}" sizes="32x32" type="image/png">
+    <title>Contacto - Cabañas Doña Arminda</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="{% url 'index' %}" class="logo">
+                <i class="fa-solid fa-house-flood-water"></i>
+                <h1>Doña Arminda</h1>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{% url 'about' %}">Acerca</a></li>
+                <li><a href="{% url 'index' %}#profile">Servicios</a></li>
+                <li><a href="{% url 'terms' %}">Términos y Condiciones</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+            </ul>
+            <div class="burger-menu">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="{% url 'about' %}">Acerca</a></li>
+                <li><a href="{% url 'index' %}#profile">Servicios</a></li>
+                <li><a href="{% url 'terms' %}">Términos y Condiciones</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="contacto" id="contacto">
+        <div class="contacto__wrapper">
+            <section class="form" id="form">
+                <h2 class="form__title" id="contact">Contacto</h2>
+                <form class="form__form" id="contactForm" method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form__input-container">
+                        <label for="name">Nombre
+                            <input type="text" id="name" name="name" placeholder="Juan" required>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="lastname">Apellido
+                            <input type="text" id="lastname" name="lastname" placeholder="Perez" required>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="email">E-mail
+                            <input type="email" id="email" name="email" placeholder="yourmail@example.com" required>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="date">Fecha
+                            <input type="date" id="date" name="date" placeholder="fecha" required>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <label>Huéspedes
+                            <select name="select">
+                                <option value="value1" selected>1</option>
+                                <option value="value2">2</option>
+                                <option value="value3">3 o más</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <label for="message">Mensaje
+                            <textarea id="message" name="message" placeholder="Tu mensaje..." required></textarea>
+                        </label>
+                    </div>
+                    <div class="form__input-container">
+                        <input type="submit" value="Enviar">
+                        <input type="reset" value="Borrar">
+                    </div>
+                </form>
+            </section>
+        </div>
+        <section class="map">
+            <div class="map__content">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509315!2d144.95565151531574!3d-37.81731397975178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577c9b3dcf1c5a!2sFlinders%20St%20Station!5e0!3m2!1sen!2sau!4v1626012602937!5m2!1sen!2sau"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>Derechos de autor © 2024 Cabañas Doña Arminda. Todos los derechos reservados.</p>
+    </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let lastname = document.getElementById('lastname').value;
+            let email = document.getElementById('email').value;
+            let date = document.getElementById('date').value;
+            let message = document.getElementById('message').value;
+
+            if (name && lastname && email && date && message) {
+                alert('Formulario enviado correctamente.');
+
+                // Aquí se puede agregar el código para enviar el formulario a un servidor
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        });
+    </script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        window.addEventListener('load', makeNavbarFixedForOtherPages);
+    </script>
+</body>
+</html>
